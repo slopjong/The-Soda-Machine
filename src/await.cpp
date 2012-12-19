@@ -1,5 +1,6 @@
 #include "await.h"
 #include "sodamachine.h"
+#include "amountnotfulfilled.h"
 
 StateInterface * Await::m_instance = NULL;
 SodaMachine * Await::m_soda_machine = NULL;
@@ -26,9 +27,14 @@ void Await::enter()
     qDebug() << "Entered" << this->objectName();
 
     m_soda_machine->set_new_state(this);
+
+    connect(m_soda_machine, SIGNAL(cash_inserted_050()), SLOT(exit()));
+    connect(m_soda_machine, SIGNAL(cash_inserted_100()), SLOT(exit()));
 }
 
 void Await::exit()
 {
     qDebug() << "Exit" << this->objectName();
+    m_soda_machine->disconnect(this, SLOT(exit()));
+    AmountNotFulfilled::instance()->enter();
 }

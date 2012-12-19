@@ -9,7 +9,7 @@ class Await : public QObject, public StateInterface
     Q_OBJECT
     Q_INTERFACES(StateInterface)
 
-public:
+public slots:
 
     void enter();
     void exit();
