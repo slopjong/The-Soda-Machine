@@ -24,6 +24,8 @@ StateInterface *PoweredOn::instance(SodaMachine *soda_machine)
 void PoweredOn::enter()
 {
     qDebug() << "Entered" << this->objectName();
+
+    m_soda_machine->set_new_state(this);
 }
 
 void PoweredOn::exit()

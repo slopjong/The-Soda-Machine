@@ -22,10 +22,7 @@ public:
     explicit SodaMachine(QWidget *parent = 0);
     ~SodaMachine();
 
-    void set_new_state(StateInterface *state)
-    {
-        m_current_state = state;
-    }
+    void set_new_state(StateInterface *state);
 
     StateInterface * current_state()
     {

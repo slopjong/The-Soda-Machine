@@ -24,6 +24,8 @@ StateInterface *AmountNotFulfilled::instance(SodaMachine *soda_machine)
 void AmountNotFulfilled::enter()
 {
     qDebug() << "Entered" << this->objectName();
+
+    m_soda_machine->set_new_state(this);
 }
 
 void AmountNotFulfilled::exit()

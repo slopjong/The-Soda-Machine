@@ -1,6 +1,7 @@
 #include "sodamachine.h"
 #include "ui_sodamachine.h"
 #include "QDebug"
+#include <QApplication>
 
 // our states
 #include "state.h"
@@ -37,6 +38,18 @@ SodaMachine::SodaMachine(QWidget *parent) :
 SodaMachine::~SodaMachine()
 {
     delete ui;
+}
+
+void SodaMachine::set_new_state(StateInterface *state)
+{
+    m_current_state = state;
+
+    // a Qt interface has no object name, so we print
+    // its address instead, we could use qApp.findChild
+    // and blow up the business logic to get the actual name
+    // or alternatively populate a name map when the states
+    // are initialized
+    qDebug() << "New state:" << state;
 }
 
 void SodaMachine::slot_cash_inserted_050()

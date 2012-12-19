@@ -24,6 +24,8 @@ StateInterface *Await::instance(SodaMachine *soda_machine)
 void Await::enter()
 {
     qDebug() << "Entered" << this->objectName();
+
+    m_soda_machine->set_new_state(this);
 }
 
 void Await::exit()
