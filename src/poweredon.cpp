@@ -29,13 +29,14 @@ void PoweredOn::enter()
 
     m_soda_machine->set_new_state(this);
 
-    if(m_soda_machine->is_empty())
-        NoSoda::instance()->enter();
-    else
-        Await::instance()->enter();
+    exit();
 }
 
 void PoweredOn::exit()
 {
     qDebug() << "Exit" << this->objectName();
+    if(m_soda_machine->is_empty())
+        NoSoda::instance()->enter();
+    else
+        Await::instance()->enter();
 }
