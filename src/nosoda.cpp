@@ -7,6 +7,7 @@ SodaMachine * NoSoda::m_soda_machine = NULL;
 NoSoda::NoSoda(QObject *parent) :
     QObject(parent)
 {
+    setObjectName("NoSoda");
 }
 
 StateInterface *NoSoda::instance(SodaMachine *soda_machine)
@@ -18,4 +19,14 @@ StateInterface *NoSoda::instance(SodaMachine *soda_machine)
         m_instance = new NoSoda;
 
     return m_instance;
+}
+
+void NoSoda::enter()
+{
+    qDebug() << "Entered" << this->objectName();
+}
+
+void NoSoda::exit()
+{
+    qDebug() << "Exit" << this->objectName();
 }

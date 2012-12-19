@@ -7,6 +7,7 @@ SodaMachine * PoweredOn::m_soda_machine = NULL;
 PoweredOn::PoweredOn(QObject *parent) :
     QObject(parent)
 {
+    setObjectName("PoweredOn");
 }
 
 StateInterface *PoweredOn::instance(SodaMachine *soda_machine)
@@ -18,4 +19,14 @@ StateInterface *PoweredOn::instance(SodaMachine *soda_machine)
         m_instance = new PoweredOn;
 
     return m_instance;
+}
+
+void PoweredOn::enter()
+{
+    qDebug() << "Entered" << this->objectName();
+}
+
+void PoweredOn::exit()
+{
+    qDebug() << "Exit" << this->objectName();
 }

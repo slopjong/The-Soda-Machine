@@ -11,8 +11,8 @@ class PoweredOn : public QObject, public StateInterface
 
 public:
 
-    void enter() {}
-    void exit() {}
+    void enter();
+    void exit();
 
     static StateInterface *instance(SodaMachine *soda_machine = 0);
 

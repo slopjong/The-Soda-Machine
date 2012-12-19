@@ -1,6 +1,8 @@
 #ifndef SODAMACHINE_H
 #define SODAMACHINE_H
 
+#include <QDebug>
+
 #include <QMainWindow>
 
 namespace Ui {
@@ -30,6 +32,18 @@ public:
         return m_current_state;
     }
 
+
+    // ------------------------------------
+    // state transition actions
+    // ------------------------------------
+
+    void refund_exchange()
+    {
+        qDebug() << "Return"
+                 << (m_amount-m_price)
+                 << " cents";
+        m_amount = 0;
+    }
 
 signals:
     void cash_inserted_050();

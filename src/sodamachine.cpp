@@ -29,6 +29,9 @@ SodaMachine::SodaMachine(QWidget *parent) :
     NoSoda::instance(this);
     PoweredOn::instance(this);
     AmountNotFulfilled::instance(this);
+
+    // the machine has now completely booted
+    PoweredOn::instance()->enter();
 }
 
 SodaMachine::~SodaMachine()

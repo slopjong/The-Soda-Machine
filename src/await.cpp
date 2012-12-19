@@ -7,6 +7,7 @@ SodaMachine * Await::m_soda_machine = NULL;
 Await::Await(QObject *parent) :
     QObject(parent)
 {
+    setObjectName("Await");
 }
 
 StateInterface *Await::instance(SodaMachine *soda_machine)
@@ -18,4 +19,14 @@ StateInterface *Await::instance(SodaMachine *soda_machine)
         m_instance = new Await;
 
     return m_instance;
+}
+
+void Await::enter()
+{
+    qDebug() << "Entered" << this->objectName();
+}
+
+void Await::exit()
+{
+    qDebug() << "Exit" << this->objectName();
 }

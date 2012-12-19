@@ -7,6 +7,7 @@ SodaMachine * AmountNotFulfilled::m_soda_machine = NULL;
 AmountNotFulfilled::AmountNotFulfilled(QObject *parent) :
     QObject(parent)
 {
+    setObjectName("AmountNotFulfilled");
 }
 
 StateInterface *AmountNotFulfilled::instance(SodaMachine *soda_machine)
@@ -18,4 +19,14 @@ StateInterface *AmountNotFulfilled::instance(SodaMachine *soda_machine)
         m_instance = new AmountNotFulfilled;
 
     return m_instance;
+}
+
+void AmountNotFulfilled::enter()
+{
+    qDebug() << "Entered" << this->objectName();
+}
+
+void AmountNotFulfilled::exit()
+{
+    qDebug() << "Exit" << this->objectName();
 }
