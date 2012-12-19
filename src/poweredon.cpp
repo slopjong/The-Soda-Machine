@@ -1,5 +1,7 @@
 #include "poweredon.h"
 #include "sodamachine.h"
+#include "nosoda.h"
+#include "await.h"
 
 StateInterface *PoweredOn::m_instance = NULL;
 SodaMachine * PoweredOn::m_soda_machine = NULL;
@@ -26,6 +28,11 @@ void PoweredOn::enter()
     qDebug() << "Entered" << this->objectName();
 
     m_soda_machine->set_new_state(this);
+
+    if(m_soda_machine->is_empty())
+        NoSoda::instance()->enter();
+    else
+        Await::instance()->enter();
 }
 
 void PoweredOn::exit()

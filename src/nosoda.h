@@ -21,7 +21,6 @@ private:
     static StateInterface *m_instance;
     static SodaMachine *m_soda_machine;
     explicit NoSoda(QObject *parent = 0);
-
 };
 
 #endif // NOSODA_H

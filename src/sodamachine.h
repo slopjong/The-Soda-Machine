@@ -24,23 +24,20 @@ public:
 
     void set_new_state(StateInterface *state);
 
-    StateInterface * current_state()
-    {
-        return m_current_state;
-    }
+    StateInterface * current_state() { return m_current_state; }
+    bool is_empty() { return m_bottles == 0; }
 
+
+public slots:
 
     // ------------------------------------
     // state transition actions
     // ------------------------------------
 
-    void refund_exchange()
-    {
-        qDebug() << "Return"
-                 << (m_amount-m_price)
-                 << " cents";
-        m_amount = 0;
-    }
+    void refund_exchange();
+    void refund_full();
+
+    void throw_out_a_soda_bottle() { m_bottles--; }
 
 signals:
     void cash_inserted_050();
@@ -53,12 +50,6 @@ private slots:
     void slot_cash_inserted_050();
     void slot_cash_inserted_100();
     void slot_abort();
-
-    // internal states
-    bool is_empty() { return m_bottles == 0; }
-
-    // actions
-    void throw_out_a_soda_bottle() { m_bottles--; }
 
 private:
     Ui::SodaMachine *ui;

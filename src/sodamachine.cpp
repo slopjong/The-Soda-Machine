@@ -18,6 +18,14 @@ SodaMachine::SodaMachine(QWidget *parent) :
     m_price(150),
     m_current_state(0)
 {
+    // override the amount of initial bottles and cash
+    // -> the initialization list is executed first
+    if(QApplication::arguments().size()>1)
+        m_bottles = QApplication::arguments().at(1).toInt();
+
+    if(QApplication::arguments().size()>2)
+        m_price = QApplication::arguments().at(2).toInt();
+
     ui->setupUi(this);
 
     // events triggered by the user
@@ -50,6 +58,18 @@ void SodaMachine::set_new_state(StateInterface *state)
     // or alternatively populate a name map when the states
     // are initialized
     qDebug() << "New state:" << state;
+}
+
+void SodaMachine::refund_exchange()
+{
+    qDebug() << QString("Return %1 cents").arg(m_amount-m_price);
+    m_amount = 0;
+}
+
+void SodaMachine::refund_full()
+{
+    qDebug() << QString("Return %1 cents").arg(m_amount);
+    m_amount = 0;
 }
 
 void SodaMachine::slot_cash_inserted_050()
