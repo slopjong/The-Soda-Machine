@@ -39,7 +39,7 @@ public slots:
     void refund_exchange();
     void refund_full();
 
-    void throw_out_a_soda_bottle() { m_bottles--; }
+    void throw_out_a_soda_bottle();
 
 signals:
     void cash_inserted_050();

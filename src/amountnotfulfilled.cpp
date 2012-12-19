@@ -61,6 +61,7 @@ void AmountNotFulfilled::enter()
     if( cash >= price )
     {
         m_soda_machine->refund_exchange();
+        m_soda_machine->throw_out_a_soda_bottle();
         m_next_state = PoweredOn::instance();
         exit();
     }

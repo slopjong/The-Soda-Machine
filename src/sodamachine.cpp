@@ -72,6 +72,13 @@ void SodaMachine::refund_full()
     m_amount = 0;
 }
 
+void SodaMachine::throw_out_a_soda_bottle()
+{
+    qDebug() << "Now throw out a bottle";
+
+    m_bottles--;
+}
+
 void SodaMachine::slot_cash_inserted_050()
 {
     m_amount += 50;
