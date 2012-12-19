@@ -26,6 +26,8 @@ public:
 
     StateInterface * current_state() { return m_current_state; }
     bool is_empty() { return m_bottles == 0; }
+    int price() { return m_price; }
+    int amount() { return m_amount; }
 
 
 public slots:

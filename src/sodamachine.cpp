@@ -57,7 +57,7 @@ void SodaMachine::set_new_state(StateInterface *state)
     // and blow up the business logic to get the actual name
     // or alternatively populate a name map when the states
     // are initialized
-    qDebug() << "New state:" << state;
+    //qDebug() << "New state:" << state;
 }
 
 void SodaMachine::refund_exchange()
